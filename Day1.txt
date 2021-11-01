@@ -1,0 +1,49 @@
+What is Git?
+	Versioning tool
+
+
+======================================
+How can we get started?
+------------------------------
+How can i version my source code?
+==============================================
+
+Step 1 - Install git in Workstation(Laptop)
+	Windows -> EXE - git-scm.com
+				- git bash [IMP] -> Git + Basic Linux command in Windows
+				- gitk
+				- git gui
+				- cmd
+	GUI
+	- https://git-scm.com/downloads/guis
+	SourceTree by Atlassion	
+		
+	Linux
+		RHEL/Centos - sudo yum install git -y
+		Ubuntu - sudo apt-get install git -y
+
+Step 2 - Create a repo
+$ git init
+
+ 502  cd /e
+  503  pwd
+  504  ls
+  505  cd TrainX/
+  506  clear
+  507  ls
+  508  start .
+  509  mkdir repo1
+  510  clear
+  511  cd repo1/
+  512  pwd
+  513  clear
+  514  git init
+  515  history
+
+
+
+Step 3
+
+Step 4 
+
+Step 5
