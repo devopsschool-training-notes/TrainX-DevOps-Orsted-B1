@@ -42,8 +42,85 @@ $ git init
 
 
 
-Step 3
+Step 3 - Create/Copy your files which you want to version.
 
-Step 4 
+Step 4 - Add a files to GIT
 
-Step 5
+  523  git add file1.txt
+  524  git add file2.txt
+  525  git add --all
+
+[ ONE TIME ]
+git config user.name "Rajesh Kumar"
+git config user.email "rajesh@devopsschool.com"
+git config --list
+
+Step 5 - Commit a file to GIT
+
+git commit -m"My First Commit"
+
+Step 6 - How to see a list of commits aka List of Version
+
+$ git log
+commit f5957c9900688e4f0910c10dc2c53d9ba9f5377e (HEAD -> master)
+Author: Rajesh Kumar <rajesh@devopsschool.com>
+Date:   Mon Nov 1 07:43:34 2021 +0530
+
+    My First Commit
+
+f5957c9900688e4f0910c10dc2c53d9ba9f5377e 
+- 40 CHAR UUID for identifying a commit
+- SHA1
+- Call it CHECKSUM
+- We call it commit id
+- Short form - f5957c9
+
+(HEAD -> master)
+- master - is default branch name
+- HEAD - TIP of the commit for each branch
+
+Who?	Rajesh Kumar <rajesh@devopsschool.com>
+What?	$ git show commit-id
+Why?	"My First Commit"
+Where?	$ git show commit-id
+When?	Mon Nov 1 07:43:34 2021 +0530
+
+Rajesh Kumar@DESKTOP-6KRAAR8 MINGW64 /e/TrainX/repo1 (master)
+$ git show f5957c9900688e4f0910c10dc2c53d9ba9f5377e
+commit f5957c9900688e4f0910c10dc2c53d9ba9f5377e (HEAD -> master)
+Author: Rajesh Kumar <rajesh@devopsschool.com>
+Date:   Mon Nov 1 07:43:34 2021 +0530
+
+    My First Commit
+
+diff --git a/file1.txt b/file1.txt
+new file mode 100644
+index 0000000..0a22d21
+--- /dev/null
++++ b/file1.txt
+@@ -0,0 +1,2 @@
++This is Code line#1
++This is Code line#2
+\ No newline at end of file
+diff --git a/file2.txt b/file2.txt
+new file mode 100644
+index 0000000..e69de29
+diff --git a/file3.txt b/file3.txt
+new file mode 100644
+index 0000000..e69de29
+
+================================
+Git is not a file versioning tool. its a filesystem versioning tools
+Refer - git internal
+===============================
+
+
+
+
+
+
+
+
+
+
+
