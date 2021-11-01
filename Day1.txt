@@ -246,17 +246,68 @@ How to delete a file?
   629  ls
   630  history
 
+=========================================
+Dev LOVE GIT
+---------------
+Enterprise	
+	- GUI
+	- ISSUES
+	- WIKI	
+	- Ability to manage multiple CR
+	- RBAC
+	--------------
+	GIT HAS NOT SUCH FEATURE
 
+	PAY FOT IT
+	----------
+	github - gitlab - bitbucket - aws devops - azure devops - gerrit
+	------------------------------------------------------------------
+				SERVER
+	Hosting platform for remote repo
 
+	- GUI
+	- ISSUES
+	- WIKI	
+	- Ability to manage multiple CR
+	- RBAC
+	
+How to work with Remote aka Central repo aka github repo?
+---------------------------------------------------------
+Step 1 - Register and Validate a account at github.com
+Step 2 - Login and create a repo at github.com
+Step 3 - WORKSAPCE - git push url master 
+		HTTP - PAT [https://github.com/settings/tokens]
+		SSH - You need to upload ur PUBLIC key to github
+					id_rsa.pub ==> https://github.com/settings/ssh/new
+		$ ssh-keygen 
+		ON GITBASH - TO create new pvt n pub key
+			
 
-
-
-
-
-
-
-
-
+ 634  git log --oneline
+  635  git push https://github.com/devopsschool-demo-temporary/nov-1-2021.git master
+  636  cd ..
+  637  clear
+  638  ls
+  639  pwd
+  640  git clone git@github.com:devopsschool-demo-temporary/nov-1-2021.git
+  641  clear
+  642  ls
+  643  cd nov-1-2021/
+  644  clear
+  645  git log --oneline
+  646  touch anotherperson.txt
+  647  git add --all
+  648  git commit -m"ading another person"
+  649  clear
+  650  git log --oneline
+  651  git push origin master
+  652  cd ..
+  653  clear
+  654  ls
+  655  cd repo1/
+  656  ls
+  657  git remote add origin https://github.com/devopsschool-demo-temporary/nov-1-2021.git
+  658  git pull origin master
 
 
 
