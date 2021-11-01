@@ -44,7 +44,7 @@ $ git init
 
 Step 3 - Create/Copy your files which you want to version.
 
-Step 4 - Add a files to GIT
+Step 4 - Add a files to GIT [ Send a file from WORKING Dir to Staging ]
 
   523  git add file1.txt
   524  git add file2.txt
@@ -55,7 +55,7 @@ git config user.name "Rajesh Kumar"
 git config user.email "rajesh@devopsschool.com"
 git config --list
 
-Step 5 - Commit a file to GIT
+Step 5 - Commit a file to GIT [ Send a file from STAGING to Repo ]
 
 git commit -m"My First Commit"
 
@@ -113,10 +113,35 @@ index 0000000..e69de29
 Git is not a file versioning tool. its a filesystem versioning tools
 Refer - git internal
 ===============================
+Workflow in Git
+========================================================
 
 
-
-
+  538  clear
+  539  git status
+  540  ls
+  541  vi file2.txt
+  542  clear
+  543  git status
+  544  touch file4.txt
+  545  git status
+  546  ls
+  547  clear
+  548  ls
+  549  git status
+  550  git add file4.txt
+  551  git status
+  552  git add file2.txt
+  553  clear
+  554  git status
+  555  ls
+  556  git commit -m"adding 2nd"
+  557  git status
+  558  ls
+  559  clear
+  560  ls
+  561  git status
+  562  history
 
 
 
