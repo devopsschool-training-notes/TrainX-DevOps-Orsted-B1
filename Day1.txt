@@ -143,6 +143,126 @@ Workflow in Git
   561  git status
   562  history
 
+======================================================================
+QA
+-----------------
+How to version Existing file code changes?
+Can i commit selective file?
+How to commit directory?
+How to rename a file?
+How to move a file from one location to another?
+How to delete a file?
+=========================
+
+
+541  vi file2.txt
+  542  clear
+  543  git status
+  544  touch file4.txt
+  545  git status
+  546  ls
+  547  clear
+  548  ls
+  549  git status
+  550  git add file4.txt
+  551  git status
+  552  git add file2.txt
+  553  clear
+  554  git status
+  555  ls
+  556  git commit -m"adding 2nd"
+  557  git status
+  558  ls
+  559  clear
+  560  ls
+  561  git status
+  562  history
+  563  clar
+  564  clear
+  565  ls
+  566  clear
+  567  vi file4.txt
+  568  git add --All
+  569  clear
+  570  git add --all
+  571  git commit -m"adding code changes"
+  572  git log
+  573  clear
+  574  git log --oneline
+  575  ls
+  576  touch file5.txt
+  577  touch file6.txt
+  578  touch file7.txt
+  579  clear
+  580  git status
+  581  git add --all
+  582  clear
+  583  git status
+  584  git commit -m"selective one" file5.txt
+  585  git status
+  586  clear
+  587  ls
+  588  git commit -m"all"
+  589  clear
+  590  git status
+  591  mkdir src
+  592  git status
+  593  touch src/test.txt
+  594  clear
+  595  git add src/
+  596  git status
+  597  git commit -m"adding dir"
+  598  clear
+  599  ls
+  600  git mv file1.txt file11.txt
+  601  git status
+  602  ls
+  603  git commit -m"rename"
+  604  clear
+  605  ls
+  606  git mv file2.txt src/file2.txt
+  607  git status
+  608  git commit -m"moving to src"
+  609  clear
+  610  ls
+  611  clear
+  612  ls
+  613  git rm file7.txt
+  614  ls
+  615  git status
+  616  git commit -m"delete a file"
+  617  clear
+  618  ls
+  619  git log --oneline
+  620  ls
+  621  git status
+  622  clear
+  623  git status
+  624  git log --oneline
+  625  git checkout 28de6f5
+  626  clear
+  627  ls
+  628  git checkout master
+  629  ls
+  630  history
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
