@@ -108,6 +108,90 @@ working with non-master branch from cloning
   557  git branch -a
   558  git checkout dev
   559  git branch -a
+============================================================
+HEAP is TIp of the Current branch which you have checked out.
+=========================================================
+Fast Forward
+
+  572  git log --oneline
+  573  git checkout -b qa
+  574  clear
+  575  git log --oneline
+  576  touch qa1.txt;git add --all;git commit -m"adding qa1"
+  577  touch qa2.txt;git add --all;git commit -m"adding qa2"
+  578  clear
+  579  touch qa3.txt;git add --all;git commit -m"adding qa3"
+  580  git log --oneline
+  581  git checkout master
+  582  git log --oneline
+  583  clear
+  584  git merge qa
+  585  git log --oneline
+
+
+
+Recursive
+
+ 589  git log --oneline
+  590  git checkout -b recurse
+  591  git log --oneline
+  592  clear
+  593  touch recurse1.txt;git add --all;git commit -m"adding recuse1"
+  594  touch recurse2.txt;git add --all;git commit -m"adding recuse2"
+  595  git checkout master
+  596  git log --oneline
+  597  touch master1.txt;git add --all;git commit -m"adding master1"
+  598  touch master2.txt;git add --all;git commit -m"adding master2"
+  599  git log --oneline
+  600  git checkout recurse
+  601  touch recurse3.txt;git add --all;git commit -m"adding recuse3"
+  602  touch recurse4.txt;git add --all;git commit -m"adding recuse4"
+  603  git log --oneline
+  604  git checkout master
+  605  git log --oneline
+  606  touch master3.txt;git add --all;git commit -m"adding master3"
+  607  clear
+  608  git diff recurse
+  609  ls
+  610  clear
+  611  ls
+  612  git checkout recurse
+  613  ls
+  614  git checkout master
+  615  clear
+  616  git merge recurse
+  617  ls
+  618  git log --oneline
+  619  git log
+  620  git log --oneline
+
+
+
+Cherry-Picking
+=======================================
+
+  624  git checkout recurse
+  625  touch cherry1.txt;git add --all;git commit -m"adding cherry1"
+  626  touch cherry2.txt;git add --all;git commit -m"adding cherry2"
+  627  touch cherry3.txt;git add --all;git commit -m"adding cherry3"
+  628  touch cherry4.txt;git add --all;git commit -m"adding cherry4"
+  629  touch cherry5.txt;git add --all;git commit -m"adding cherry5"
+  630  clear
+  631  ls
+  632  git log --oneline
+  633  git checkout master
+  634  git cherry-pick 5719792
+  635  ls
+  636  git log --oneline
+  637  clear
+  638  git cherry-pick --help
+
+
+
+
+
+
+
 
 
 
