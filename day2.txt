@@ -187,7 +187,74 @@ Cherry-Picking
   638  git cherry-pick --help
 
 
+===================
+- Conflict resolution
+----------------------
+  643  git merge recurse
+  644  clear
+  645  ls
+  646  vi recurse1.txt
+  647  git add --all;git commit -m"done"
+  648  more recurse1.txt
+  649  cat recurse1.txt
+  650  git checkout recurse
+  651  clear
+  652  vi recurse1.txt
+  653  git add --all;git commit -m"done"
+  654  git checkout master
+  655  clear
+  656  ls
+  657  git merge recurse
+  658  vi recurse1.txt
+  659  git add --all;git commit -m"done"
+  660  git merge recurse
 
+
+
+
+- Undoing
+-------------------------------------------
+WORKING DIR ---> STAGING --> Repo
+
+Repo --> STAGING --> Working dir
+
+  663  git status
+  664  clear
+  665  touch clean.txr
+  666  git status
+  667  git clean -f -d
+  668  git status
+  669  touch reset.txr
+  670  clear
+  671  git status
+  672  git add reset.txr
+  673  git status
+  674  git reset reset.txr
+  675  git status
+  676  clear
+  677  touch good.txt;git add --all;git commit -m"ading Good"
+  678  touch bad.txt;git add --all;git commit -m"ading bad"
+  679  git log --oneline
+  680  clear
+  681  ls
+  682  git log --oneline
+  683  clear
+  684  git log --oneline
+  685  git revert 55d78f9
+  686  git log --oneline
+  687  git log --oneline -n 5
+  688  clear
+  689  git log --oneline -n 5
+  690  git diff f761503 55d78f9
+  691  git diff f7615033f8fe19
+  692  git diff f761503 3f8fe19
+
+
+
+- .gitignore
+
+- pull request
+======================
 
 
 
