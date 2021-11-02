@@ -1,0 +1,116 @@
+- Branching
+- Merging
+- Conflict resolution
+- Undoing
+- gitignore
+- pull request
+
+- Branching
+============================================
+What is branching?
+	- is a LINE of code for
+		Seprate 
+			DEV
+			BUG FIXING
+			Enhnacment
+		From Main line of Code.
+----------------------------------------
+Default branch 
+	- Master
+New Version of Git & github - Default branch - main
+
+What is Branching Strategy
+=========================
+	- Bug fixing
+	- Enhancement
+	- Team
+	- 2 Diff Geog*
+https://docs.microsoft.com/en-us/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops
+	
+
+Types of branches in Git?
+===================================
+Local Branch		- Read - Write
+Remote Branch		- Read Only
+Temporary Branch	- Ref only
+
+ 501  git --version
+  502  clear
+  503  git branch
+  504  ls
+  505  git branch -r
+  506  clear
+  507  git log --oneline
+  508  git checkout 28de6f5
+  509  git branch -a
+  510  git checkout master
+  511  git branch -a
+
+Why we have 
+- Local Branch		- Read - Write
+- Remote Branch		- Read Only
+
+PUSH === 
+Pull === Fetch + Merge
+
+git push origin master
+
+ 502  git brach -a
+  503  clear
+  504  git branch -a
+  505  git checkout remotes/origin/master
+  506  ls
+  507  clear
+  508  git checkout master
+  509  git fetch origin master
+  510  cleart
+  511  clear
+  512  ls
+  513  git checkout remotes/origin/master
+  514  ls
+  515  clear
+  516  ls
+  517  git checkout master
+  518  git branch -a
+  519  git merge remotes/origin/master
+  520  ls
+========================================================
+How to create a branches?
+=================================
+git branch dev
+git checkout -b qa
+git switch -c ops
+
+ 530  git branch dev
+  531  git branch -a
+  532  git checkout dev
+  533  git branch -a
+  534  clear
+  535  ls
+  536  touch dev1.txt;git add --all;git commit -m"adding dev1"
+  537  touch dev1.txt;git add --all;git commit -m"adding dev2"
+  538  touch dev2.txt;git add --all;git commit -m"adding dev2"
+  539  touch dev3.txt;git add --all;git commit -m"adding dev3"
+  540  clear
+  541  git log --oneline
+  542  git checkout master
+  543  clear
+  544  git log --oneline
+
+
+working with non-master branch from cloning
+
+  552  mkdir raju
+  553  git clone https://github.com/devopsschool-demo-temporary/nov-1-2021.git raju
+  554  ls
+  555  cd raju/
+  556  clear
+  557  git branch -a
+  558  git checkout dev
+  559  git branch -a
+
+
+
+
+
+
