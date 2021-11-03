@@ -1,0 +1,109 @@
+Objective for org
+-------------------
+- Quality Release
+- Reducing of Dev and Running cost
+- Imm Release
+
+How can they achieve?
+----------------------------------------------------
+SDLC Model	WATERFALL -> Agile -> DevOps -> DevSecOps
+Software Arch	Monolitic -> SOA -> Microservices
+Platform	PHYSICAL Server -> Virtual Server -> Containers
+Team		So many team ---> DEV+OPS --> ONE
+Org					Change in mindsets
+Employee	I would do only my things ----> I would do all
+Processs	- Get rid of all old process ---> Have a process which really adding value
+Practices	- Get rid of all old Practices ---> Have a Practices which really adding value
+--------------------------------------------------------------
+
+How to implement DevOps?
+---------------------------------------------
+CI -> CD -> CD
+
+
+CI
+===============
+Continously Integrate
+	------> Phases 
+	------> Tools
+	------> Team
+
+Auto Build + Auto Test
+-----------------------
+     IMM feedback
+
+PLAN -> Code -> Analyze -> Build -> UT -> Pack -> Archive -> Dep2QA -> AT -> CC
+-------------------------------------------------------------------------------
+BOARD -> Repos  ------------PIPELINE------------  ARTIFACT  TESTPLAN
+
+JIRA -> Git  -> SonarQube -> Maven-> Junit-> War -> Artifactory-> Ansible -> Selenium -> jacoco
+--------------------------------------------------------------------------------
+ARC  -> DEV  -> Sr Dev --> BR  -> Dev  -> BR ---> RB --> QA --> QA --> Mgr
+========================================================================================
+				Azure DevOps
+				Jenkins
+				Bamboo
+				Teamcity
+				Github CI
+				Gitlab CI
+
+
+										IF PASS - Release
+										IF Fail - Repeat
+
+CD - Continously Delivery
+CD - Continously Deployment
+https://blog.crisp.se/wp-content/uploads/2013/02/continuous-delivery-deployment-sm.jpg
+
+Auto Build + Auto Test + Auto Deployment
+------------------------------------------
+         IMM feedback
+
+
+
+DevOps
+=======================
+https://miro.medium.com/max/1400/0*kLIvYAJJd3ZQZbw1.jpg
+
+Are you DevOps Engineer?
+------------------------
+You need to write CODE for the Product?
+You need to write CODE for the testing a Product?
+You need to write CODE for the infra/ops for running a Product?
+======================== 1 PERSON ==============================
+
+================================================================
+			Engineering + SRE
+
+More About DevOps - DevSecOps - SRE
+https://www.devopsschool.com/blog/10-best-youtube-channels-for-programmers-and-devops-engineers/
+
+
+
+============================================
+Step 1 - Register at https://dev.azure.com/ and Login
+Step 2 - Work with UI
+Step 3 - Create ORG		IMP => ORG Setting
+Step 4 - Create a PROJECT 	IMP => PROJECT Setting
+Step 5 - Create a Git REPO
+Step 6 - Clone a repo and Do 5 commits and Push it.
+
+
+VSS --> TFVS --> AzureDevOps
+
+
+
+
+
+GIT TAGS
+==============
+  527  git tag release1.0
+  528  git log
+  529  clear
+  530  git tag --list
+  531  git push origin release1.0
+
+
+
+
+
