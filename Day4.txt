@@ -1,0 +1,81 @@
+
+Linux - 10
+- Rajesh - 3.108.54.115
+User Name - centos
+Key - 
+rajesh-mumbai.pem - FOR SSH	[ssh -i rajesh-mumbai.pem centos@3.108.54.115]
+rajesh-mumbai.ppk - FOR Putty
+
+
+authentication type
+=======================================
+https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops
+
+https://vstsagentpackage.azureedge.net/agent/2.194.0/vsts-agent-linux-x64-2.194.0.tar.gz
+https://dev.azure.com/professnow
+ProfessnowPool
+Windows - 10
+
+4  cd
+    5  pwd
+    6  mkdir myagent && cd myagent
+    7  wget https://vstsagentpackage.azureedge.net/agent/2.194.0/vsts-agent-linux-x64-2.194.0.tar.gz
+   10  tar -zxvf vsts-agent-linux-x64-2.194.0.tar.gz
+   21  sudo yum update
+   15  sudo ./bin/installdependencies.sh
+   13  ./config.sh
+   14  ./run.sh
+
+
+
+
+Windows
+-=-------------
+Administrator
+
+13.233.201.31	Qw53EX4Flxu$;j*y-gdZV(d.*XYeTzL?
+
+https://vstsagentpackage.azureedge.net/agent/2.194.0/vsts-agent-win-x64-2.194.0.zip
+
+
+PS C:\> mkdir agent ; cd agent
+PS C:\agent> Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-2.194.0.zip", "$PWD")
+
+PS C:\agent> .\config.cmd
+PS C:\agent> .\run.cmd
+
+
+Azure-DevOps-Batch1
+
+========================
+Linux
+==================
+centos
+==============================
+
+15.206.88.245
+13.233.199.204
+13.233.147.180
+13.233.158.71
+13.233.26.67
+13.233.102.164
+3.110.49.30
+3.108.52.207
+13.233.151.192
+65.0.21.43
+===============================
+WINDOWS
+=================
+Administrator
+
+15.206.88.245	WhI4xE?yaXwEQ%aBvyWG%v9R4N)6bS;%
+13.233.199.204	!s!W=vj*zb@STAXo44pjy$)KY!.IWMXt
+13.233.147.180	vM7FcSXxQChtAKU5G4%yJUQY(sm3*=w2
+13.233.158.71	yz7(d7;xUN;TFJrYP8--)f-vyPWE&57C	
+13.233.26.67	$rI&cUj=!OpWf=qqPK!L-pyr98j2d975
+13.233.102.164	*%7Ygjj?&Ubc$bUE5SG$uNB2GcG3Rg;!
+3.110.49.30	e$2TWt&3;.uoozuqU3*W3!yjPPzXhg$z
+3.108.52.207	W.9n-!-R4Ezo*dr&qQ6N7;d2V8hr3nh3
+13.233.151.192	=qQPuAN;wP!z6EfdsoH?DQ8S%u258Szb
+65.0.21.43	iz*uA$p!?4.*qcm8EktHX-GXD@n@uz.h
+
