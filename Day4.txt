@@ -78,8 +78,55 @@ WINDOWS
 13.233.151.192	=qQPuAN;wP!z6EfdsoH?DQ8S%u258Szb
 65.0.21.43	iz*uA$p!?4.*qcm8EktHX-GXD@n@uz.h
 
+===================================
 
 
+vnet - infra ----> INFRA tool [ Terraform | Ansible ]
+----------------------------
+	Azure DevOps
+==========================
+Pipeline
+	- Build
+		Artifact(Package)
+	- Release
+		Deploy to ENV | Deployment Tar
+
+=======================
+JAVA - https://github.com/devopsschool-demo-labs-projects/java-sonarqube-helloworld-src
+Build -> UT -> Pack ->
+-----------------------------
+Builder - Maven
+
+Build --> Goal (compile)
+Test --> Goal (test)
+Package --> Goal (package)
+
+=======================
+GIT - Where you have SCRIPT for creating a vnet
+EMPTY - 
+	Call cmd to run that script
 
 
+Maven
+===============
+  29  sudo yum install unzip -y
+   30  clear
+   31  ls
+   32  wget https://dlcdn.apache.org/maven/maven-3/3.8.3/binaries/apache-maven-3.8.3-bin.zip
+   33  clear
+   34  ls
+   35  unzip apache-maven-3.8.3-bin.zip
+   36  clear
+   37  ls
+   38  pwd
+   39  cd apache-maven-3.8.3
 
+
+JAVA_HOME
+======================
+sudo yum install java-11-openjdk-devel -y
+sudo yum install git -y
+
+Git upgrade
+------------------------------
+https://devopsschool.com/tutorial/git/git-upgrade-process.html
