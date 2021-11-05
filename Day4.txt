@@ -63,7 +63,7 @@ centos
 13.233.150.111			Joe Faeezri bin Johari
 35.154.81.128	
 13.127.23.179	
-13.235.87.80	
+13.235.87.80        Norazim	
 
 WINDOWS
 =================
@@ -76,7 +76,7 @@ WINDOWS
 3.110.49.30	e$2TWt&3;.uoozuqU3*W3!yjPPzXhg$z		Joe Faeezri bin Johari
 3.108.52.207	W.9n-!-R4Ezo*dr&qQ6N7;d2V8hr3nh3
 13.233.151.192	=qQPuAN;wP!z6EfdsoH?DQ8S%u258Szb
-65.0.21.43	iz*uA$p!?4.*qcm8EktHX-GXD@n@uz.h
+65.0.21.43	iz*uA$p!?4.*qcm8EktHX-GXD@n@uz.h        Norazim
 
 
 
