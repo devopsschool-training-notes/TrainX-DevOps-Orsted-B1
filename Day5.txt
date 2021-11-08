@@ -68,6 +68,27 @@ Write a yaml file to checkout https://github.com/devopsschool-demo-labs-projects
 & 
 Create a dir of "devops pipeline"
 
+===============================
+
+pool:
+  name: ProfessPool
+
+steps:
+- script: |
+   echo Write your commands here
+   
+   echo Hello world
+   
+   mkdir devops
+
+   git clone https://github.com/devopsschool-demo-labs-projects/java-sonarqube-helloworld-src
+
+
+- task: Maven@3
+  displayName: 'Maven pom.xml'
+  inputs:
+    mavenPomFile: '$(Parameters.mavenPOMFile)'
+    goals: compile
 
 
 
@@ -75,12 +96,134 @@ Create a dir of "devops pipeline"
 
 
 
+variables:
+- group: raj-var-grp
+- name: mycity
+  value: 'value of my-bare-variable'
+
+
+
+
+variables:
+- group: raj-var-grp
+- name: mycity
+  value: $[variables.mycity] # uses runtime expression
+
+steps:
+- script: echo $(mycity)
 
 
 
 
 
+mkdir azagent;cd azagent;curl -fkSL -o vstsagent.tar.gz https://vstsagentpackage.azureedge.net/agent/2.194.0/vsts-agent-linux-x64-2.194.0.tar.gz;tar -zxvf vstsagent.tar.gz; if [ -x "$(command -v systemctl)" ]; then ./config.sh --deploymentgroup --deploymentgroupname "rajesh-dep-group" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/professnow/ --work _work --projectname 'professional' --runasservice; sudo ./svc.sh install; sudo ./svc.sh start; else ./config.sh --deploymentgroup --deploymentgroupname "rajesh-dep-group" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/professnow/ --work _work --projectname 'professional'; ./run.sh; fi
 
+
+
+mkdir azagent;cd azagent;curl -fkSL -o vstsagent.tar.gz https://vstsagentpackage.azureedge.net/agent/2.194.0/vsts-agent-linux-x64-2.194.0.tar.gz;tar -zxvf vstsagent.tar.gz; if [ -x "$(command -v systemctl)" ]; then ./config.sh --deploymentgroup --deploymentgroupname "rajesh-dep-group" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/professnow/ --work _work --projectname 'professional' --auth PAT --token pl5lhpcrcxy6ubvkzhq4j73mp26glw6isf6louw5iaduihodnu4q --runasservice; sudo ./svc.sh install; sudo ./svc.sh start; else ./config.sh --deploymentgroup --deploymentgroupname "rajesh-dep-group" --acceptteeeula --agent $HOSTNAME --url https://dev.azure.com/professnow/ --work _work --projectname 'professional' --auth PAT --token pl5lhpcrcxy6ubvkzhq4j73mp26glw6isf6louw5iaduihodnu4q; ./run.sh; fi
+
+https://stackoverflow.com/questions/58954243/yaml-iis-web-deploy-deployment-group
+
+
+
+trigger:
+- master
+
+stages:
+- stage: 'Build'
+  displayName: 'Build the web application'
+  
+  jobs:
+  - job: 'Build'
+    displayName: 'Build job'
+    
+    pool:
+      vmImage: 'windows-latest'
+    
+    variables:
+      solution: '**/*.sln'
+      buildPlatform: 'Any CPU'
+      buildConfiguration: 'Release'
+    
+    steps:
+    - task: NuGetToolInstaller@1
+    
+    - task: NuGetCommand@2
+      inputs:
+        restoreSolution: '$(solution)'
+    
+    - task: VSBuild@1
+      inputs:
+        solution: '$(solution)'
+        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
+    
+    - task: VSTest@2
+      inputs:
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
+        
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+
+- stage: 'Deploy'
+  displayName: 'Deploy the web application'
+  dependsOn: Build
+  jobs:
+  - deployment: 'DeployToDev'
+    displayName: 'Deploy the web application to dev environment'
+    variables:
+      Parameters.IISDeploymentType: 'IISWebsite'
+      Parameters.ActionIISWebsite: 'CreateOrUpdateWebsite'
+      Parameters.WebsiteName: 'Default Web Site'
+      Parameters.WebsitePhysicalPath: '%SystemDrive%\inetpub\wwwroot\AspNetDemo'
+      Parameters.AddBinding: false
+      Parameters.VirtualPathForApplication: '/AspNetDemo'
+      Parameters.AppPoolName: ''
+      Parameters.VirtualApplication: 'AspNetDemo'
+      Parameters.Package: '$(Pipeline.Workspace)\drop\*.zip'
+      Parameters.RemoveAdditionalFilesFlag: true
+      Parameters.TakeAppOfflineFlag: true
+      Parameters.XmlTransformation: true
+      Parameters.XmlVariableSubstitution: true
+    environment:
+      name: Dev
+      resourceType: VirtualMachine
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+            
+          - task: IISWebAppManagementOnMachineGroup@0
+            displayName: 'IIS Web App Manage'
+            inputs:
+              IISDeploymentType: '$(Parameters.IISDeploymentType)'
+              ActionIISWebsite: '$(Parameters.ActionIISWebsite)'
+              WebsiteName: '$(Parameters.WebsiteName)'
+              WebsitePhysicalPath: '$(Parameters.WebsitePhysicalPath)'
+              AddBinding: $(Parameters.AddBinding)
+              ParentWebsiteNameForVD: '$(Parameters.WebsiteName)'
+              VirtualPathForVD: '$(Parameters.VirtualPathForApplication)'
+              ParentWebsiteNameForApplication: '$(Parameters.WebsiteName)'
+              VirtualPathForApplication: '$(Parameters.VirtualPathForApplication)'
+              AppPoolName: '$(Parameters.AppPoolName)'
+
+          - task: IISWebAppDeploymentOnMachineGroup@0
+            displayName: 'IIS Web App Deploy'
+            inputs:
+              WebSiteName: '$(Parameters.WebsiteName)'
+              VirtualApplication: '$(Parameters.VirtualApplication)'
+              Package: '$(Parameters.Package)'
+              RemoveAdditionalFilesFlag: $(Parameters.RemoveAdditionalFilesFlag)
+              TakeAppOfflineFlag: $(Parameters.TakeAppOfflineFlag)
+              XmlTransformation: $(Parameters.XmlTransformation)
+              XmlVariableSubstitution: $(Parameters.XmlVariableSubstitution)
 
 
 
