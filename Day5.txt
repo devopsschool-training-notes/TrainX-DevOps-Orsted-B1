@@ -1,0 +1,92 @@
+
+==============================================================
+Psucode-
+-----------------
+What you want to do in pipeline
+-----------------------------------
+YAML
+
+Jobs
+	Steps
+		Tasks
+---------------------------
+Create a Classic Pipeline
+	- Each Tasks
+	-----------------------> YAML ----> YAML pipeline
+
+
+===============================================================
+
+pool: ProfessPool
+
+pool:
+  name: ProfessPool
+  demands: maven
+
+#Your build pipeline references an undefined variable named ‘Parameters.mavenPOMFile’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+
+steps:
+- script: |
+   echo Write your commands here
+   
+   echo Hello world
+   
+   
+   git clone https://github.com/devopsschool-demo-labs-projects/java-sonarqube-helloworld-src
+  displayName: 'Command Line Script'
+
+- task: Maven@3
+  displayName: 'Maven pom.xml'
+  inputs:
+    mavenPomFile: '$(Parameters.mavenPOMFile)'
+    goals: compile
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: '**/*.jar'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+  condition: succeededOrFailed()
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+  condition: succeededOrFailed()
+
+=======================================
+Azure DevOps
+=================================
+
+
+
+
+TASK 
+===================
+Write a yaml file to checkout https://github.com/devopsschool-demo-labs-projects/java-sonarqube-helloworld-src
+& 
+Create a dir of "devops pipeline"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
