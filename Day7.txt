@@ -64,8 +64,10 @@ Step 1 - Install Terraform
 ------------------------------------------
 - https://www.terraform.io/downloads.html
 - Extract it
-- Set a installer in the path
+- Set a installer in the path	| set PATH=%PATH%;C:\tools\hashicorp\terraform
 - $ terraform version
+
+
 
 Step 2 - Install Providers
 https://www.terraform.io/docs/language/providers/index.html
@@ -84,6 +86,14 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "=2.46.0"
     }
+	github = {
+      source  = "integrations/github"
+      version = "~> 4.0"
+    }
+	azuredevops = {
+      source = "microsoft/azuredevops"
+      version = ">=0.1.0"
+    }
   }
 }
 
@@ -91,6 +101,19 @@ terraform {
 provider "azurerm" {
   features {}
 }
+
+provider "azuredevops" {
+	org_service_url = "https://dev.azure.com/holidaylandmark"
+	personal_access_token = ""
+}
+
+
+# Configure the GitHub Provider
+provider "github" {
+	token = ""
+}
+
+
 ---------------------------------
 
 Step 3  - Write a Code
@@ -110,16 +133,25 @@ Step 3  - Write a Code
 	----------------------.tf--------------------------
 	Resources
 		Resource1
+			Arguments1
+			Arguments2
+			Arguments3
 			Attribute1
 			Attribute2
 			Attribute3
 			Attribute4
 		Resource2
+			Arguments1
+			Arguments2
+			Arguments3
 			Attribute1
 			Attribute2
 			Attribute3
 			Attribute4
 		Resource3
+			Arguments1
+			Arguments2
+			Arguments3
 			Attribute1
 			Attribute2
 			Attribute3
@@ -133,9 +165,137 @@ terrafo	PLAN 	- APPLY   - DELETE
 	DRY RUN | CREATE or Update | delete
 
 
+Azure			Github			Azure DevOps
+=====================================================================
+VM			create a Repo		Create a repo
+---------------------------------------------------------------------
+Create 
+Update
+delete
+
+
+https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs
+https://registry.terraform.io/providers/integrations/github/latest/docs
+https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs
+
+https://www.terraform.io/docs/language/meta-arguments/depends_on.html
+
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "West Europe"
+}
+
+resource "azurerm_virtual_network" "example" {
+  name                = "example-network"
+  address_space       = ["10.0.0.0/16"]
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+}
+
+resource "azurerm_subnet" "example" {
+  name                 = "internal"
+  resource_group_name  = azurerm_resource_group.example.name
+  virtual_network_name = azurerm_virtual_network.example.name
+  address_prefixes     = ["10.0.2.0/24"]
+}
+
+resource "azurerm_network_interface" "example" {
+  name                = "example-nic"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.example.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
+resource "azurerm_linux_virtual_machine" "example" {
+  name                = "example-machine"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+  size                = "Standard_F2"
+  admin_username      = "adminuser"
+  network_interface_ids = [
+    azurerm_network_interface.example.id,
+  ]
+
+  admin_ssh_key {
+    username   = "adminuser"
+    public_key = file("~/.ssh/id_rsa.pub")
+  }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "16.04-LTS"
+    version   = "latest"
+  }
+}
+
+===========================================================
+How Providers Authenticate with API?
+------------------------------------------------------
+Azure 
+https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs#authenticating-to-azure
+
+AWS
+
+Github
+https://registry.terraform.io/providers/integrations/github/latest/docs#authentication
+-
+Azure devOps
+https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs
+--------------
+resource "azuredevops_project" "azurerepo" {
+  name               = "rajesh-repo"
+  visibility         = "private"
+  version_control    = "Git"
+  work_item_template = "Agile"
+}
+-----------------
+resource "github_repository" "github-example" {
+  name        = "example"
+  description = "My awesome codebase"
+
+  visibility = "public"
+}
+
+
+-----------------------------------
+IDEOMPOTENT
+-----------------------------------
+
+	DESIRE		VS 	ACTUAL		ACTION
+	--------------------------------
+1 	5 RESC				0	5
+2	1 CHANGE		4 + 1		1	
+3	6 = 5+1			5		1
+
+2	2			1		1
 
 
 
+What is State file in terraform?
+-----------------------------------
+JSON file
+Contains Response of APPLY | DELETE 
+- file name - terraform.tfstate - MOST Recent
+- file name - terraform.tfstate.backup - Second Last RUN
+
+
+---------
+Assignment #1
+- Write a tf script to authentication github and azuredevops
+- Write a tf script to create a repo
+- work with PLAN - Apply - Destroy
+- Understand more state file.
 
 
 
