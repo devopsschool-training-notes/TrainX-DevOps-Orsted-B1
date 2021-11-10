@@ -1,0 +1,145 @@
+What is Terraform?
+========================================
+	Coding for Infra
+	ONE Lang for All the Infra Tools
+	Dev By - Hashicorp
+		- Vagrant
+		- terraform
+		- packer
+		- Consul
+		- nomad
+		- Vault
+	Written in Golang
+	Release
+		Terraform		- CMD - FREE - OpenSource
+		Terraform Enterprise	- GUI - Paid - Prop
+	Version 
+		1.0.10
+========================================
+
+What are the tools we have in infra?
+===================================
+AWS
+Azure
+GC
+Vmware
+GITHUB
+Azure DevOps
+Bitbucket
+Mysql
+MSSql
+Apache
+Ngnix
+Tomcat
+IIS
+Queqe
+LoadBalancers
+Network Tools
+Docker
+Kubernetes
+Datadog
+NewRelic
+Splunk
+Nagios
+Prom
+
+
+
+How Terraform works?
+=========================================
+
+1 API = ONE FEATURE
+
+Azure -------------> API Server ----> 500 Features Aka Resources or API
+----------------------------------------------------------------------
+CRUD
+	PROGRAMING	CALLING
+	CREATE 		GET
+	READ		PUT
+	UPDATE		POST
+	DELETE		DELETE
+
+
+Step 1 - Install Terraform
+------------------------------------------
+- https://www.terraform.io/downloads.html
+- Extract it
+- Set a installer in the path
+- $ terraform version
+
+Step 2 - Install Providers
+https://www.terraform.io/docs/language/providers/index.html
+https://registry.terraform.io/browse/providers
+
+Manually 
+Coding 
+	- Write a .tf code for downloading provider
+	- $ terraform init
+https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs
+
+---------------------------------
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=2.46.0"
+    }
+  }
+}
+
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  features {}
+}
+---------------------------------
+
+Step 3  - Write a Code
+	------------------------
+	Contains What Resources you want to work it?
+
+	Resources	Options Aka Attributes
+	------------------------------------
+	VM
+			Subscription
+			Resource Group
+			Image
+			CPU+RAM
+			NET
+			ETC
+
+	----------------------.tf--------------------------
+	Resources
+		Resource1
+			Attribute1
+			Attribute2
+			Attribute3
+			Attribute4
+		Resource2
+			Attribute1
+			Attribute2
+			Attribute3
+			Attribute4
+		Resource3
+			Attribute1
+			Attribute2
+			Attribute3
+			Attribute4
+	=====================================================
+	GET  - PUT - POST - DELETE
+	=====================================================
+Step 4 - 
+terrafo	PLAN 	- APPLY   - DELETE
+	-----------------------------------------------------
+	DRY RUN | CREATE or Update | delete
+
+
+
+
+
+
+
+
+
+
+
+
