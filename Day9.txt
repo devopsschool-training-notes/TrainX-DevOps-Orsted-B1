@@ -13,3 +13,11 @@ https://www.devopsschool.com/blog/example-of-terraform-terraform-tfvars/
 set TF_VAR_numofusers=3
 set TF_VAR_reponame=ramukaka
 terraform apply -var "create_vm=true"
+
+
+How to create and attach disk to VMS in Azure?
+----------------------------------
+Step 1 - Create a Volume - azurerm_managed_disk
+Step 2 - Attach a disk to VMS - azurerm_virtual_machine_data_disk_attachment
+Step 3 - Use remote-exec provisoners
+Run following commands - https://docs.microsoft.com/en-us/azure/virtual-machines/linux/attach-disk-portal
