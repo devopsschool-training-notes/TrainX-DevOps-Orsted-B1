@@ -1,0 +1,15 @@
+number - https://www.devopsschool.com/blog/terraform-variable-number-type-explained/
+string - https://www.devopsschool.com/blog/terraform-variable-string-type-explained-2/
+list - https://www.devopsschool.com/blog/terraform-variable-list-type-explained/
+map - https://www.devopsschool.com/blog/terraform-variable-map-type-explained/
+bool - https://www.devopsschool.com/blog/terraform-variable-boolean-type-explained/
+--------------
+https://www.devopsschool.com/blog/terraform-environment-variables-exaplained/
+https://www.devopsschool.com/blog/terraform-variable-using-tf_var-environment-variables-example/
+https://www.devopsschool.com/blog/example-of-terraform-terraform-tfvars/
+
+
+
+set TF_VAR_numofusers=3
+set TF_VAR_reponame=ramukaka
+terraform apply -var "create_vm=true"
